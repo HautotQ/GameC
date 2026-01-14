@@ -9,5 +9,7 @@ add_executable(GameC main.c
         src/world.c
         src/world.h
         src/Camera.c
-        src/Camera.h)
+        src/Camera.h
+        src/block.c
+        src/block.h)
 target_link_libraries(GameC raylib)

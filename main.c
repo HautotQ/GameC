@@ -4,6 +4,7 @@
 
 #include "raylib.h"
 #include "src/world.h"
+#include "src/block.h"
 
 int main(void) {
     InitWindow(1000, 600, "Mini Minecraft - Raylib");
@@ -17,6 +18,7 @@ int main(void) {
     camera.projection = CAMERA_PERSPECTIVE;
 
     CreateWorld();
+    InitBlockTextures();
 
     DisableCursor(); // FPS style
 
@@ -42,7 +44,7 @@ int main(void) {
                         Color color = GREEN;
                         if (world[x][y][z] == BLOCK_STONE) color = GRAY;
 
-                        DrawCube((Vector3){ x, y, z }, 1.0f, 1.0f, 1.0f, color);
+                        DrawBlock((Vector3){x, y, z}, BLOCK_GRASS);
                         DrawCubeWires((Vector3){ x, y, z }, 1.0f, 1.0f, 1.0f, BLACK);
                     }
                 }
@@ -55,6 +57,7 @@ int main(void) {
         EndDrawing();
     }
 
+    UnloadBlockTextures();
     CloseWindow();
     return 0;
 }
